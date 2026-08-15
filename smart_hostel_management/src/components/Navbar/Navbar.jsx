@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, AlertCircle } from "lucide-react";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -14,7 +14,6 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
 
-       
         <Link to="/" className="navbar-logo" onClick={closeMenu}>
           <div className="logo-icon">S</div>
 
@@ -23,38 +22,50 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
         <div className="navbar-links">
-          <Link to="/" className="nav-link">
+          <Link to="/" className="nav-link" onClick={closeMenu}>
             Home
           </Link>
 
-          <a href="#features" className="nav-link">
+          <Link to="/features" className="nav-link" onClick={closeMenu}>
             Features
-          </a>
+          </Link>
 
-          <a href="#about" className="nav-link">
+          <a href="#about" className="nav-link" onClick={closeMenu}>
             About
           </a>
 
-          <a href="#contact" className="nav-link">
+          <a href="#contact" className="nav-link" onClick={closeMenu}>
             Contact
           </a>
         </div>
 
-        {/* Desktop Buttons */}
         <div className="navbar-actions">
-          <Link to="/login" className="login-btn">
+
+          <Link
+            to="/complaints"
+            className="complaint-btn"
+            onClick={closeMenu}
+          >
+            <AlertCircle size={16} />
+            Raise Complaint
+          </Link>
+
+          <Link to="/login" className="login-btn" onClick={closeMenu}>
             Login
           </Link>
 
-          <Link to="/register" className="get-started-btn">
+          <Link
+            to="/register"
+            className="get-started-btn"
+            onClick={closeMenu}
+          >
             Get Started
             <ArrowRight size={17} />
           </Link>
+
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           className="menu-btn"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -64,15 +75,15 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Navigation */}
       <div className={`mobile-menu ${menuOpen ? "active" : ""}`}>
+
         <Link to="/" onClick={closeMenu}>
           Home
         </Link>
 
-        <a href="#features" onClick={closeMenu}>
+        <Link to="/features" onClick={closeMenu}>
           Features
-        </a>
+        </Link>
 
         <a href="#about" onClick={closeMenu}>
           About
@@ -82,8 +93,22 @@ const Navbar = () => {
           Contact
         </a>
 
+        <Link
+          to="/complaints"
+          className="mobile-complaint"
+          onClick={closeMenu}
+        >
+          <AlertCircle size={17} />
+          Raise Complaint
+        </Link>
+
         <div className="mobile-actions">
-          <Link to="/login" className="mobile-login" onClick={closeMenu}>
+
+          <Link
+            to="/login"
+            className="mobile-login"
+            onClick={closeMenu}
+          >
             Login
           </Link>
 
@@ -95,6 +120,7 @@ const Navbar = () => {
             Get Started
             <ArrowRight size={17} />
           </Link>
+
         </div>
       </div>
     </nav>

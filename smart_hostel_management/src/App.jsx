@@ -1,7 +1,11 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
-import { Routes, Route } from "react-router-dom";
+import Login from "./pages/Login/Login";
+import RoomAllocation from "./pages/RoomAllocation/RoomAllocation";
+import Features from "./pages/Features/Features";
+import Complaint from "./pages/Complaint/Complaint";
 
 const App = () => {
   return (
@@ -9,13 +13,13 @@ const App = () => {
       <Navbar />
 
       <main>
-        <section style={{ paddingTop: "120px", textAlign: "center" }}>
-          <h1>Smart Hostel Management System</h1>
-          <p>Smarter Hostel Management. Better Student Experience.</p>
-        </section>
         <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/room-allocation" element={<RoomAllocation />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/complaints" element={<Complaint />} />
+        </Routes>
       </main>
     </>
   );

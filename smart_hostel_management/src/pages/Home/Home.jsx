@@ -20,6 +20,7 @@ const features = [
     title: "Smart Room Allocation",
     description:
       "Manage rooms, beds and occupancy efficiently with a centralized room management system.",
+    path: "/room-allocation",
   },
   {
     icon: MessageSquareWarning,
@@ -57,15 +58,11 @@ const Home = () => {
   return (
     <div className="home">
 
-      {/* ================= HERO ================= */}
-
       <section className="hero">
         <div className="hero-glow hero-glow-one"></div>
         <div className="hero-glow hero-glow-two"></div>
 
         <div className="hero-container">
-
-          {/* Hero Content */}
 
           <div className="hero-content">
 
@@ -118,8 +115,6 @@ const Home = () => {
             </div>
 
           </div>
-
-          {/* Dashboard Preview */}
 
           <div className="hero-visual">
 
@@ -207,8 +202,6 @@ const Home = () => {
 
             </div>
 
-            {/* Floating Cards */}
-
             <div className="floating-card floating-card-one">
               <div className="floating-icon success">
                 <CheckCircle2 size={17} />
@@ -234,8 +227,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* ================= STATS ================= */}
 
       <section className="stats-section">
         <div className="stats-container">
@@ -269,8 +260,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ================= FEATURES ================= */}
-
       <section className="features-section" id="features">
 
         <div className="section-container">
@@ -298,9 +287,8 @@ const Home = () => {
             {features.map((feature, index) => {
               const Icon = feature.icon;
 
-              return (
-                <div className="feature-card" key={index}>
-
+              const cardContent = (
+                <>
                   <div className="feature-icon">
                     <Icon size={22} />
                   </div>
@@ -312,7 +300,20 @@ const Home = () => {
                   <div className="feature-arrow">
                     <ArrowRight size={17} />
                   </div>
+                </>
+              );
 
+              return feature.path ? (
+                <Link
+                  to={feature.path}
+                  className="feature-card feature-card-link"
+                  key={index}
+                >
+                  {cardContent}
+                </Link>
+              ) : (
+                <div className="feature-card" key={index}>
+                  {cardContent}
                 </div>
               );
             })}
@@ -321,8 +322,6 @@ const Home = () => {
 
         </div>
       </section>
-
-      {/* ================= WHY SMART HOSTEL ================= */}
 
       <section className="why-section" id="about">
 
@@ -401,8 +400,6 @@ const Home = () => {
         </div>
 
       </section>
-
-      {/* ================= CTA ================= */}
 
       <section className="cta-section" id="contact">
 
